@@ -17,7 +17,7 @@ const BigPost = props => {
     }
 
     return (
-        <div className='col-md-6'>
+        <div className='col-md-6' style={{ height: '380px'}}>
             <div className='row g-0 border rounded-4 overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative'>
                 <div className='col p-4 d-flex flex-column position-static'>
                     <div
