@@ -57,5 +57,5 @@ window.env = {
   "npm_node_execpath": "/usr/local/bin/node",
   "npm_config_prefix": "/usr/local",
   "COLORTERM": "truecolor",
-  "API_KEY": "dc5428c41502475badbf160eb594ac01"
+  "API_KEY": "dc5428c41502475badbf160eb594ac"
 };

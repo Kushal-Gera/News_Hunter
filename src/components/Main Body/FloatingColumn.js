@@ -20,7 +20,7 @@ const FloatingColumn = (props) => {
             </div>
 
             <div class="py-4">
-                <h4 class="fst-bold">Usefull Links</h4>
+                <h4 class="fst-bold">Useful Links</h4>
                 <ol class="list-unstyled">
                     <li><a href='https://github.com/Kushal-Gera/NewsHunter-Web-App' target='_blank'>Source Code</a></li>
                     <li><a href='https://drive.google.com/file/d/1CZVBi9f3cagu_ZxaWSqj_YkZtR-7jtUi/view?usp=drivesdk' target='_blank'>Get App</a></li>

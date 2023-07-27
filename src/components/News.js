@@ -6,10 +6,11 @@ import { Header } from '../components/Header/Header'
 import { Footer } from '../components/Footer/Footer'
 import { Featured } from '../components/Featured Section/Featured'
 import { Body } from "../components/Main Body/Body"
+import { Alert } from "../components/Alert"
 import {config} from "../config"
 
 // Testing Data Handling
-import {testData} from "../test_data"
+import {test_newsPosts, test_entertainmentNewsPosts, test_worldNewsPosts} from "../test_data"
 
 
 const News = (props)=>{
@@ -33,6 +34,13 @@ const News = (props)=>{
         }, 5000);
     }
 
+    const showAlert = ()=>{
+        setIsAlert(true)
+        setTimeout(() => {
+            setIsAlert(false)
+        }, 5000);
+    }
+
     async function get_news_feed(country='in', category=null, setData, isLoopData=false) {
         let url = ''
         if(category === undefined || category === null)
@@ -40,74 +48,82 @@ const News = (props)=>{
         else
             url = `https://newsapi.org/v2/top-headlines?country=${country}&category=${category}&apiKey=` + config.API_KEY
         
+        
+        let API_DATA = null
         axios
             .get(url)
             .then((response)=>{
                 const {data} = response
                 if(data?.status !== 'ok') throw new Error("Error in Response")
                 
-                const newsPosts_cleaned = cleanData(data.articles)
+                API_DATA = data
+            })
+            .catch(err=>{
+                console.log(err.toString())
+                // API_DATA = []
+
+                API_DATA = test_newsPosts
+                if(country === 'us' && category === 'general') 
+                    API_DATA = test_worldNewsPosts
+                if(country === 'in' && category === 'entertainment') 
+                    API_DATA = test_entertainmentNewsPosts
+                
+                showAlert()
+            })
+            .finally(()=>{
+                const newsPosts_cleaned = cleanData(API_DATA.articles)
                 console.log(newsPosts_cleaned)
                 setData(newsPosts_cleaned)
 
                 if(isLoopData)
                     loopData(newsPosts_cleaned, setData)
             })
-            .catch(err=>{
-                console.log(err.toString())
-                setData([])
-            })
     }
 
     async function get_query_feed(query, setData){
         let url = config.BASE_URL + "/top-headlines?q=" + query + "&" + config.API_KEY
 
+        let API_DATA = null
         axios
             .get(url)
             .then((response)=>{
                 const {data} = response
                 if(data?.status !== 'ok') throw new Error("Error in Response")
 
-                const newsPosts_cleaned = cleanData(data.articles)
-                console.log(newsPosts_cleaned)
-                setData(newsPosts_cleaned)
+                API_DATA = data
             })
             .catch(err=>{
                 console.log(err.toString())
-                setNewsPosts([])
+                API_DATA = []
+            })
+            .finally(()=>{
+                const newsPosts_cleaned = cleanData(API_DATA.articles)
+                console.log(newsPosts_cleaned)
+                setData(newsPosts_cleaned)
+
+                loopData(newsPosts_cleaned, setData)
             })
     }
 
     const [newsPosts, setNewsPosts] = useState([])
     const [worldNewsPosts, setWorldNewsPosts] = useState([])
     const [entertainmentNewsPosts, setEntertainmentNewsPosts] = useState([])
+    const [isAlert, setIsAlert] = useState(false)
 
 
     useEffect(()=>{
         console.log(props.category)
         get_news_feed('in', props.category, setNewsPosts)
-
-        // //  TESTING ************
-        // const td = cleanData(testData)
-        // console.log(td)
-        // setNewsPosts(td)
-        // // ************
-
     }, [props.category])
 
     useEffect(()=>{
         get_news_feed('in', 'entertainment', setEntertainmentNewsPosts, true)
         get_news_feed('us', 'general', setWorldNewsPosts, true)
-
-        // //  TESTING ************
-        // const td = cleanData(testData)
-        // console.log(td)
-        // setWorldNewsPosts(td)
-        // // ************
     }, [])
 
     return (
         <>
+            { isAlert && <Alert/> }
             <Header category={props.category}/>
             <main className="container">
                 <Featured data={entertainmentNewsPosts.slice(0,3)}/>
