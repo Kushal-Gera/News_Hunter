@@ -18,18 +18,25 @@
 ## Screenshots  
 
 <table><tr><td>
-    <img src="https://github.com/Kushal-Gera/NewsHunter-Web-App/assets/53964520/9d17fb34-839d-4c74-96ca-4de57c692f1a" />
+    <img src="https://github.com/Kushal-Gera/News_Hunter/assets/53964520/f4880306-e547-47e7-b5d0-d0e543f052c4" />
 </td></tr></table>
 
 <table><tr><td>
-    <img src="https://github.com/Kushal-Gera/NewsHunter-Web-App/assets/53964520/1c4d2d95-daf1-437a-8b82-5d5974978a34" />
+    <img src="https://github.com/Kushal-Gera/News_Hunter/assets/53964520/1d21a375-d95a-459a-abda-481941b5dd02" />
 </td></tr></table>
 
 <table><tr><td>
-    <img height="500" width="250" src="https://github.com/Kushal-Gera/NewsHunter-Web-App/assets/53964520/51d1bad9-f9e5-49fa-85e8-09a539849097"/>
+    <img src="https://github.com/Kushal-Gera/News_Hunter/assets/53964520/f6e2decb-ae51-4126-8be9-6a83c175a25c" />
 </td></tr></table>
 
 <table><tr><td>
-    <img src="https://github.com/Kushal-Gera/NewsHunter-Web-App/assets/53964520/30ce3029-92dd-473a-a8c9-3e0493cdda67" height="500" width="250" />
+    <img src="https://github.com/Kushal-Gera/News_Hunter/assets/53964520/e57e7755-db50-4c69-882a-56588f5beb58" />
 </td></tr></table>
 
+<table><tr><td>
+    <img height="500" width="250" src="https://github.com/Kushal-Gera/News_Hunter/assets/53964520/6bd9d5f6-dc8d-4579-b71e-68897c594b5e"/>
+</td></tr></table>
+
+<table><tr><td>
+    <img height="500" width="250" src="https://github.com/Kushal-Gera/News_Hunter/assets/53964520/43597907-79fc-4e30-bc59-28c4e1010ed0"/>
+</td></tr></table>
