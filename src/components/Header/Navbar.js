@@ -4,6 +4,8 @@ import { Link, useLocation } from "react-router-dom";
 
 const Navbar = (props)=>{
 
+    const location = useLocation()
+
     useEffect(()=>{
         let newTitle = "News Hunter - " 
         if(!!props?.category)
@@ -12,11 +14,6 @@ const Navbar = (props)=>{
             newTitle += "Home"
         document.title = newTitle
     }, [props.category])
-
-    const location = useLocation()
-    useEffect(()=>{
-
-    }, [location])
 
     const scrollToDest = ()=>{
         var my_element = document.getElementById("body");
