@@ -1,6 +1,6 @@
 # News-Hunter
 
-### Checkout @ https://news-hunter-react.onrender.com
+### Checkout @ https://news-hunter-buqi.onrender.com
 ### News Hunter Web App is an online news platform to update you with all the latest news on your fingertips. It supports both desktop as well as mobile friendly design.
 ### The webapp is powered by Node.js for computational backend, React.js for Frontend heavy lifting and Render for hosting.
 
