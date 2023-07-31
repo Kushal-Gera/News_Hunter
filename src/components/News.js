@@ -11,9 +11,13 @@ import {config} from "../config"
 
 // Testing Data Handling
 import {test_newsPosts, test_entertainmentNewsPosts, test_worldNewsPosts} from "../test_data"
+import { useNavigate, useParams } from "react-router-dom";
 
 
 const News = (props)=>{
+
+    const navigate = useNavigate()
+
 
     const cleanData = (newsPosts)=>{
         const newData = newsPosts.map((item)=>{
@@ -81,7 +85,7 @@ const News = (props)=>{
     }
 
     async function get_query_feed(query, setData){
-        let url = config.BASE_URL + "/top-headlines?q=" + query + "&" + config.API_KEY
+        let url = config.BASE_URL + "/everything?q=" + query + "&apiKey=" + config.API_KEY
 
         let API_DATA = null
         axios
@@ -89,19 +93,20 @@ const News = (props)=>{
             .then((response)=>{
                 const {data} = response
                 if(data?.status !== 'ok') throw new Error("Error in Response")
-
+                
                 API_DATA = data
             })
             .catch(err=>{
                 console.log(err.toString())
-                API_DATA = []
+                // API_DATA = []  
+
+                showAlert()
+                navigate('/')
             })
             .finally(()=>{
                 const newsPosts_cleaned = cleanData(API_DATA.articles)
                 console.log(newsPosts_cleaned)
                 setData(newsPosts_cleaned)
-
-                loopData(newsPosts_cleaned, setData)
             })
     }
 
@@ -110,10 +115,20 @@ const News = (props)=>{
     const [entertainmentNewsPosts, setEntertainmentNewsPosts] = useState([])
     const [isAlert, setIsAlert] = useState(false)
 
+    const {searchTag} = useParams()
+
 
     useEffect(()=>{
-        console.log(props.category)
-        get_news_feed('in', props.category, setNewsPosts)
+        const category = props.category
+        console.log(category)
+
+        if(category === "search"){
+            console.log('hello', searchTag)
+            get_query_feed(searchTag, setNewsPosts)
+        }else{
+            get_news_feed('in', category, setNewsPosts)
+        }
+
     }, [props.category])
 
     useEffect(()=>{

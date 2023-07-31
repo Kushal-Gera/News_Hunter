@@ -9,6 +9,7 @@ const App = () => {
         <BrowserRouter>
             <Routes>
                 <Route key={'/'} path="/" element={<News />} />
+                <Route key={'/search'} exact path="/search/:searchTag" element={<News category='search' />} />
                 <Route key={'/technology'} exact path="/technology" element={<News category='technology' />} />
                 <Route key={'/business'} exact path="/business" element={<News category='business' />} />
                 <Route key={'/sports'} exact path="/sports" element={<News category='sports' />} />

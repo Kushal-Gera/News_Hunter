@@ -1,17 +1,22 @@
-import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useRef } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 
 const Navbar = (props)=>{
 
     const location = useLocation()
+    const inputRef = useRef(null)
+    const navigate = useNavigate()
+
 
     useEffect(()=>{
-        let newTitle = "News Hunter - " 
+        let newTitle = "" 
         if(!!props?.category)
             newTitle += props.category[0].toUpperCase() + props.category.slice(1);
         else
             newTitle += "Home"
+        newTitle += " - News Hunter"
+        
         document.title = newTitle
     }, [props.category])
 
@@ -24,6 +29,19 @@ const Navbar = (props)=>{
           });
     }
 
+    const onHandleClick = (event)=>{
+        const querytag = inputRef.current.value
+        
+        if(!querytag)
+            navigate('/')
+        else{
+            navigate('/search/' + querytag)
+            scrollToDest()
+        }
+        
+        event.preventDefault()
+    }
+
     return (
         <div className="container">
             <div className="nav-scroller py-1 my-1">
@@ -34,9 +52,9 @@ const Navbar = (props)=>{
                     <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/sports'?'active':''}`} to="/sports">Sports</Link>
                     <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/health'?'active':''}`} to="/health">Health</Link>
                     
-                    <form className="d-flex mx-auto mx-md-0 mb-2 mb-md-0" role="search">
-                        <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
-                        <button className="btn btn-warning" type="submit">Search</button>
+                    <form className="d-flex mx-auto mx-md-0 mb-2 mb-md-0" role="search" onSubmit={onHandleClick} >
+                        <input ref={inputRef} className="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+                        <button className="btn btn-warning" type="submit" onClick={onHandleClick} >Search</button>
                     </form>
                 </nav>
             </div>
