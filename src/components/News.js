@@ -99,9 +99,9 @@ const News = (props)=>{
             .catch(err=>{
                 console.log(err.toString())
                 // API_DATA = []  
-
+                
+                API_DATA = test_newsPosts
                 showAlert()
-                navigate('/')
             })
             .finally(()=>{
                 const newsPosts_cleaned = cleanData(API_DATA.articles)
