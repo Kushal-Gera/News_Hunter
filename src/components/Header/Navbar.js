@@ -31,7 +31,7 @@ const Navbar = (props)=>{
                     <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/'?'active':''}`} to="/">Home</Link>
                     <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/technology'?'active':''}`} to="/technology">Technology</Link>
                     <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/business'?'active':''}`} to="/business">Business</Link>
-                    <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/politics'?'active':''}`} to="/politics">Politics</Link>
+                    <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/sports'?'active':''}`} to="/sports">Sports</Link>
                     <Link onClick={scrollToDest} className={`nav-item nav-link link-body-emphasis ${location.pathname==='/health'?'active':''}`} to="/health">Health</Link>
                     
                     <form className="d-flex mx-auto mx-md-0 mb-2 mb-md-0" role="search">

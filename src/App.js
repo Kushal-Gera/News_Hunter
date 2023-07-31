@@ -11,7 +11,7 @@ const App = () => {
                 <Route key={'/'} path="/" element={<News />} />
                 <Route key={'/technology'} exact path="/technology" element={<News category='technology' />} />
                 <Route key={'/business'} exact path="/business" element={<News category='business' />} />
-                <Route key={'/politics'} exact path="/politics" element={<News category='politics' />} />
+                <Route key={'/sports'} exact path="/sports" element={<News category='sports' />} />
                 <Route key={'/health'} exact path="/health" element={<News category='health' />} />
             </Routes>
         </BrowserRouter>
