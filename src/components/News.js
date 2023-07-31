@@ -11,13 +11,10 @@ import {config} from "../config"
 
 // Testing Data Handling
 import {test_newsPosts, test_entertainmentNewsPosts, test_worldNewsPosts} from "../test_data"
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 
 const News = (props)=>{
-
-    const navigate = useNavigate()
-
 
     const cleanData = (newsPosts)=>{
         const newData = newsPosts.map((item)=>{
